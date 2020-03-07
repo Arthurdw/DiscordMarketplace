@@ -1,0 +1,68 @@
+#container {
+    margin-top: 10px;
+}
+
+@media all and (max-width:1025px) {
+    #top {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .card {
+        width: 270px;
+        background-color: #99aab5;
+        border-radius: 10px;
+        margin: 20px;
+        height: 300px;
+        float: left;
+        position: relative;
+    }
+
+    .card h4, .card p, .card h3, .card button {
+        margin: 0 0 0 10px;
+    }
+
+    .card h4 {
+        float: right;
+        margin: 10px 10px;
+        width: 130px;
+        font-size: 22px;
+    }
+
+    .card p {
+        margin: 5px 10px 5px 10px;
+    }
+
+    .card img {
+        border-radius: 3%;
+        height: 128px;
+        margin-top: -10px;
+        margin-left: -10px;
+    }
+
+    .card button {
+        position: absolute;
+        bottom: 0;
+        width: 120px;
+        border-radius: 3px;
+        padding: 10px;
+        margin: 10px;
+        border: 0;
+        margin-right: 10px;
+        background-color: #7289da;
+        color: white;
+        transition: background-color 0.4s ease;
+    }
+
+    .card button:hover {
+        background-color: #4f5f98;
+    }
+
+    .view {
+        left: 0;
+    }
+
+    .price {
+        right: 0;
+    }
+}

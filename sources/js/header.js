@@ -14,7 +14,7 @@ function setup() {
     var imgURL = document.createElement("a");
     imgURL.href = "#";
     var img = document.createElement("img");
-    img.src = "../sources/img/dummy.png";
+    img.src = "https://de-professionals.nl/wp-content/uploads/2017/10/logo-dummy.png"; // Give url
     img.alt = "Discord Marketplace Icon";
     imgURL.append(img);
     header.append(hamburger);
@@ -24,16 +24,16 @@ function setup() {
     var pre = document.createElement("div");
     pre.id = "pre";
     var preUL = document.createElement("ul");
-    addLI(preUL, "Bots", "#");
-    addLI(preUL, "Ads", "#");
-    addLI(preUL, "Servers", "#");
+    addLI(preUL, "Bots", "bots");  // Give url
+    addLI(preUL, "Ads", "#");      // Give url
+    addLI(preUL, "Servers", "#");  // Give url
     var sub = document.createElement("div");
     sub.id = "sub";
     var subUL = document.createElement("ul");
-    addLI(subUL, "Home", "#");
-    addLI(subUL, "API", "#");
-    addLI(subUL, "Join Discord", "#");
-    addLI(subUL, "Login", "#");
+    addLI(subUL, "Home", "#");          // Give url
+    addLI(subUL, "API", "#");           // Give url
+    addLI(subUL, "Join Discord", "#");  // Give url
+    addLI(subUL, "Login", "#");         // Give url
     pre.append(preUL);
     sub.append(subUL);
     nav.append(pre);
