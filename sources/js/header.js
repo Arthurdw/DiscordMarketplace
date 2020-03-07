@@ -14,7 +14,7 @@ function setup() {
     var imgURL = document.createElement("a");
     imgURL.href = "#";
     var img = document.createElement("img");
-    img.src = "https://de-professionals.nl/wp-content/uploads/2017/10/logo-dummy.png"; // Give url
+    img.src = "https://arthurdw.github.io/DiscordMarketplace/sources/img/Logo.png"; // Give url
     img.alt = "Discord Marketplace Icon";
     imgURL.append(img);
     header.append(hamburger);
