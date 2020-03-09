@@ -15,3 +15,8 @@ def get_prefix(bot, message, main=False):
     if not main:
         mentions.append(prefix)
     return prefix if main else mentions
+
+
+def update_channels():
+    """Returns the channels which are signed up to receive update notifications."""
+    return [686310015128436783]
