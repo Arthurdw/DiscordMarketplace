@@ -26,8 +26,8 @@ def github():
                              (f"**Modified** (`{len(modified)}`): " + ", ".join(f"`{file}`" for file in modified) if modified else ""),
                              (f"**Removed** (`{len(removed)}`): " + ", ".join(f"`{file}`" for file in removed) if removed else "")])
         data.update({"changes": changes})
-        from extensions.general import general
-        await general.general.push_commit(data)
+        from extensions.updates import update
+        await updates.update.push_commit(data)
         return json.dumps(request.json)
 
 
