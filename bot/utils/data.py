@@ -19,4 +19,4 @@ def get_prefix(bot, message, main=False):
 
 def update_channels():
     """Returns the channels which are signed up to receive update notifications."""
-    return [686310015128436783]
+    return [685811186091950254]
