@@ -1,3 +1,4 @@
+from extensions.updates import write
 from datetime import datetime
 from flask import json, request, Flask
 
@@ -8,7 +9,6 @@ app = Flask(__name__)
 def github():
     if request.headers["Content-Type"] == 'application/json':
         req = request.json
-        print(req)
         added, modified, removed = [], [], []
         data = {"repo": req["repository"]["name"], "count": len(req["commits"]), "commits": []}
         for head in req["commits"]:
@@ -26,8 +26,7 @@ def github():
                              (f"**Modified** (`{len(modified)}`): " + ", ".join(f"`{file}`" for file in modified) if modified else ""),
                              (f"**Removed** (`{len(removed)}`): " + ", ".join(f"`{file}`" for file in removed) if removed else "")])
         data.update({"changes": changes})
-        from extensions.updates import update
-        await updates.update.push_commit(data)
+        write(str(data))
         return json.dumps(request.json)
 
 
