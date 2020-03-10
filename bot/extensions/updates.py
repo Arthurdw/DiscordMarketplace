@@ -36,10 +36,6 @@ class Updates(commands.Cog):
         title = f"[{commit['repo']}] {len(commit['commits'])} new commits."
         for channel in [self.bot.get_channel(channel_id) for channel_id in update_channels()]:
             await channel.send(**em(title=title, content=commit["changes"]))
-            
-    @commands.command()
-    async def test(self, ctx):
-        await self.push_commit({"repo": "testWebhookRepo", "count": 1, "commits": [{"author": "Arthurdw", "author_avatar": "https://avatars0.githubusercontent.com/u/38541241?v=4", "author_url": "https://github.com/Arthurdw", "message ": ["Update aa.py "], "time ": "datetime.datetime(2020, 3, 9, 21, 12, 37)"}], "changes": "Updated `1` files:\n**Modified** (`1`): `aa.py`"})
 
     @commands.Cog.listener()
     async def on_ready(self):
