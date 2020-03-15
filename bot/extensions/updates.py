@@ -1,5 +1,3 @@
-import discord
-import datetime
 from asyncio import sleep
 from discord.ext import commands
 from run import em
@@ -23,13 +21,15 @@ def write(data):
 class Updates(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.state = read()
+        self.initial = read()
+        self.state = self.initial
 
     async def check_commit(self):
         while True:
-            if self.state != read():
+            if self.state != self.initial:
                 await self.push_commit(eval(read()))
-                self.state = read()
+                write(self.initial)
+                self.state = self.initial
             await sleep(10)
 
     async def push_commit(self, commit):

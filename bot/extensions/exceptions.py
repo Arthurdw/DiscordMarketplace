@@ -12,6 +12,8 @@ class ErrorHandler(commands.Cog):
     async def on_command_error(self, ctx, error):
         if isinstance(error, discord.NotFound):
             return
+        if isinstance(error, (discord.Forbidden, discord.errors.Forbidden)):
+            pass
         elif isinstance(error, (TypeError, commands.MissingRequiredArgument)):
             await ctx.send(**em(layout="error",
                                 content=f"Missing argument(s) for the '{ctx.command.qualified_name}' command.\n"
