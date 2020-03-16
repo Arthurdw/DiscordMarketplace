@@ -21,15 +21,13 @@ def write(data):
 class Updates(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.initial = read()
-        self.state = self.initial
+        write("")
 
     @tasks.loop(seconds=10)
     async def check_commit(self):
-        if self.state != self.initial:
+        if read() != "":
             await self.push_commit(eval(read()))
-            write(self.initial)
-            self.state = self.initial
+            write("")
 
     async def push_commit(self, commit):
         title = f"[{commit['repo']}] {len(commit['commits'])} new commits."
