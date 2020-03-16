@@ -1,5 +1,5 @@
 from asyncio import sleep
-from discord.ext import commands
+from discord.ext import commands, tasks
 from run import em
 from utils.data import update_channels
 
@@ -24,13 +24,12 @@ class Updates(commands.Cog):
         self.initial = read()
         self.state = self.initial
 
+    @tasks.loop(seconds=10)
     async def check_commit(self):
-        while True:
-            if self.state != self.initial:
-                await self.push_commit(eval(read()))
-                write(self.initial)
-                self.state = self.initial
-            await sleep(10)
+        if self.state != self.initial:
+            await self.push_commit(eval(read()))
+            write(self.initial)
+            self.state = self.initial
 
     async def push_commit(self, commit):
         title = f"[{commit['repo']}] {len(commit['commits'])} new commits."
@@ -39,7 +38,7 @@ class Updates(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        self.bot.loop.create_task(self.check_commit())
+        self.check_commit.start()
 
 
 def setup(bot):

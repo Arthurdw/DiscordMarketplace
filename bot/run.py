@@ -30,7 +30,7 @@ class Manager(commands.Bot):
                          case_insensitive=True,
                          help_attrs=dict(hidden=True))
         # Display and load extensions!)
-        for extension in glob.glob("extensions/*.py"):
+        for extension in sorted(glob.glob("extensions/*.py")):
             print("\b" + extension.replace("extensions" + back_slash, "")[:-3] + ": Starting", end='')
             sys.stdout.flush()
             self.load_extension(extension.replace(back_slash, ".")[:-3])

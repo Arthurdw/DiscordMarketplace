@@ -12,13 +12,15 @@ class ErrorHandler(commands.Cog):
     async def on_command_error(self, ctx, error):
         if isinstance(error, discord.NotFound):
             return
-        if isinstance(error, (discord.Forbidden, discord.errors.Forbidden)):
+        elif isinstance(error, (discord.Forbidden, discord.errors.Forbidden)):
             pass
         elif isinstance(error, (TypeError, commands.MissingRequiredArgument)):
             await ctx.send(**em(layout="error",
                                 content=f"Missing argument(s) for the '{ctx.command.qualified_name}' command.\n"
                                         f"Use the command like this:\n{get_prefix(self.bot, ctx.message, True)}"
                                         f"{ctx.command.qualified_name} {' '.join(ctx.command.clean_params)}"))
+        elif isinstance(error, commands.MissingAnyRole):
+            await ctx.send(**em(content="You are missing the required permissions/role!"))
         else:
             raise error
 
