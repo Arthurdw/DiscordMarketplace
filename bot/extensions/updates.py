@@ -26,11 +26,12 @@ class Updates(commands.Cog):
     async def check_commit(self):
         print(read() != "")
         if read() != "":
+            import traceback
             try:
                 await self.push_commit(eval(read()))
                 write("")
             except Exception as e:
-                raise e
+                traceback.print_tb(e.__traceback__)
 
     async def push_commit(self, commit):
         title = f"[{commit['repo']}] {len(commit['commits'])} new commits."
