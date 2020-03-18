@@ -34,11 +34,10 @@ class Moderation(commands.Cog):
     @commands.command(name="kick")
     @commands.has_any_role(*all_perms)
     async def kick(self, ctx, member: discord.Member = None, *, reason="Undefined"):
-        role_ids = [role.id for role in member.roles]
-        if 688802497006927924 in role_ids:
+        if 688802497006927924 in [role.id for role in member.roles]:
             return await ctx.send(**em("You can't kick server bots!"))
         if await self.checks(ctx, member, "kick"):
-            if [i for i in role_ids if i in self.all_perms]:
+            if [i for i in [role.id for role in member.roles] if i in self.all_perms]:
                 return await ctx.send(**em("This user is currently in the management team.\n"
                                            "If you would like to kick/remove this user from the server the demotion protocol should be used.\n"
                                            "If you are a member of the management team you are unable to do this and if you have something against a member from the management team please contact a member of the senior management team."))

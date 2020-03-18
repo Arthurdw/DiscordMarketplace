@@ -25,7 +25,6 @@ class Updates(commands.Cog):
 
     @tasks.loop(seconds=10)
     async def check_commit(self):
-        print(read() != "")
         if read() != "":
             await self.push_commit(eval(read()))
             write("")

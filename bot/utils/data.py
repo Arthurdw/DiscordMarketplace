@@ -1,4 +1,5 @@
 import configparser
+from utils.supportResponses import responses as support_responses
 config = configparser.ConfigParser()
 config.read("settings/config.cfg")
 
@@ -20,3 +21,9 @@ def get_prefix(bot, message, main=False):
 def update_channels():
     """Returns the channels which are signed up to receive update notifications."""
     return [685811186091950254]
+
+
+def get_support():
+    """Returns all the support keyword values that have been fetched from the current SQLITE database.
+    Returns a dict"""
+    return support_responses
