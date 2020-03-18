@@ -3,8 +3,8 @@
 }
 
 * {
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
-    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
     outline: none !important;
 }
 
@@ -30,6 +30,92 @@ header nav div ul li a {
     top: 80px;
 }
 
+@media all and (min-width:1026px) {
+    header {
+        background-color: #7289da;
+    }
+
+    header a img {
+        z-index: 99;
+        height: 60px;
+        border-radius: 10%;
+        border: 5px solid #7289da;
+        position: fixed;
+        top: 0px;
+        right: 10vw;
+        transition: margin-left 0.5s ease-in-out;
+        background-color: #7289da;
+    }
+
+    header button.hamburger {
+        z-index: 98;
+        top: -100%;
+    }
+
+    header.active a img {
+        margin-left: calc(85vw - 45px);
+    }
+
+    header nav {
+        color: #ffffff;
+        opacity: 1 !important;
+        pointer-events: none !important;
+        transition: opacity 0.6s ease-out;
+        position: absolute;
+        width: calc(80vw - 20px);
+        left: 10vw;
+        top: 0px;
+        height: 60px;
+    }
+
+    header.active nav {
+        opacity: 1 !important;
+        pointer-events: all !important;
+    }
+
+    header nav div#pre {
+        float: right;
+        position: absolute;
+        left: 350px;
+    }
+
+    header nav div#sub {
+        float: left;
+    }
+
+    header nav div ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    header nav ul li {
+        float: left;
+        margin-top: 20px;
+        margin-right: 10px;
+    }
+
+    header nav div ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    header nav div ul li a {
+        z-index: 101;
+        padding: calc(30px - 1rem);
+        text-align: center;
+        opacity: 0.8;
+        transition: background-color 0.2s ease-in;
+    }
+
+    header nav div ul li a:active,
+    header nav div ul li a:hover {
+        background-color: red;
+    }
+}
+
+/*  */
+
 /* header nav div ul {
     z-index: 97;
     float: left;
@@ -54,7 +140,6 @@ header nav div ul li {
         top: 0px;
         margin-left: calc(50vw - 45px);
         transition: margin-left 0.5s ease-in-out;
-        background-color: #7289da;
     }
 
     header button.hamburger {
@@ -101,7 +186,8 @@ header nav div ul li {
         transition: background-color 0.2s ease-in;
     }
 
-    header nav div ul li a:active, header nav div ul li a:hover {
+    header nav div ul li a:active,
+    header nav div ul li a:hover {
         background-color: #667bc4;
     }
 }
